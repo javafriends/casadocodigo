@@ -25,8 +25,16 @@
 				<label for="numeroPaginas">Número de Páginas:</label>
 				<input type="text" name="numeroPaginas" id="numeroPaginas">
 			</div>
-			
-			<div>
+
+			<c:forEach items="${tipos}" var="tipoLivro" varStatus="status">
+				<div>
+					<label for="preco_${tipoLivro}">${tipoLivro}:</label> 
+					<input type="text"   name="precos[${status.index}].valor" id="preco_${tipoLivro}" /> 
+					<input type="hidden" name="precos[${status.index}].tipoLivro" value="${tipoLivro}" />
+				</div>
+			</c:forEach>
+
+		<div>
 				<input type="submit" value="Enviar" />
 			</div>
 		
