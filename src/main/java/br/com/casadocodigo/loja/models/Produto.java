@@ -20,6 +20,7 @@ public class Produto {
 	
 	@Lob
 	private String descricao;
+	
 	private int numeroPaginas;
 	
 	@ElementCollection
