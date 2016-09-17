@@ -6,16 +6,18 @@
 <title>Listagem de Produtos</title>
 </head>
 <body>
+	<p>${mensagem}</p>
+
 	<table>
 		<tr>
 			<th>Título</th>
-			<th>Valores</th>
+			<th>Preços</th>
 		</tr>
 		<c:forEach items="${produtos}" var="produto">
 			<tr>
 				<td>${produto.titulo}</td>
 				<td><c:forEach items="${produto.precos}" var="preco">
-						[${preco.valor} - ${preco.tipoLivro}]
+						[ ${preco.tipoLivro}: R$ ${preco.valor} ]
 					</c:forEach>
 				</td>
 			</tr>

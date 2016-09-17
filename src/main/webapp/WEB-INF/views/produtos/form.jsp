@@ -1,4 +1,6 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,22 +10,24 @@
 
 <body>
 
-	<c:url value="/produtos" var="url" />
-	<form action="${url}" method="post">
-		
-			<div>
+	<form:form action="${spring:mvcUrl('saveProduto').build()}" method="post" commandName="produto">
+
+		<div>
 				<label for="titulo">Titulo:</label>
-				<input type="text" name="titulo" id="titulo" />
+				<form:input path="titulo" id="titulo" />
+				<form:errors path="titulo"/>
 			</div>
 			
 			<div>
 				<label for="descricao">Descrição:</label>
-				<textarea rows="10" cols="20" name="descricao" id="descricao"></textarea>
+				<form:textarea rows="10" cols="20" path="descricao" id="descricao"></form:textarea>
+				<form:errors path="descricao"/>
 			</div>
 			
 			<div>
 				<label for="numeroPaginas">Número de Páginas:</label>
-				<input type="text" name="numeroPaginas" id="numeroPaginas">
+				<form:input path="numeroPaginas" id="numeroPaginas" />
+				<form:errors path="numeroPaginas"/>
 			</div>
 
 			<c:forEach items="${tipos}" var="tipoLivro" varStatus="status">
@@ -38,7 +42,7 @@
 				<input type="submit" value="Enviar" />
 			</div>
 		
-	</form>
+	</form:form>
 
 
 </body>
