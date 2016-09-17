@@ -37,7 +37,6 @@ public class JPAConfiguration {
 		return em;
 	}
 
-	
 
 	@Bean
 	public DataSource dataSource() {
