@@ -30,7 +30,13 @@
 				<form:errors path="numeroPaginas"/>
 			</div>
 
-			<c:forEach items="${tipos}" var="tipoLivro" varStatus="status">
+		<div>
+			<label for="releaseDate">Data de lançamento</label> <input
+				type="date" name="dataLancamento" id="dataLancamento" />
+			<form:errors path="dataLancamento" />
+		</div>
+
+		<c:forEach items="${tipos}" var="tipoLivro" varStatus="status">
 				<div>
 					<label for="preco_${tipoLivro}">${tipoLivro}:</label> 
 					<input type="text"   name="precos[${status.index}].valor" id="preco_${tipoLivro}" /> 

@@ -25,10 +25,10 @@ public class ProdutosController {
 	@Autowired
 	private ProdutoDAO produtoDAO;
 	
-	@InitBinder
-	public void initBinder(WebDataBinder dataBinder) {
-		dataBinder.addValidators(new ProdutoValidator());
-	}
+//	@InitBinder
+//	public void initBinder(WebDataBinder dataBinder) {
+//		dataBinder.addValidators(new ProdutoValidator());
+//	}
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView list() {
