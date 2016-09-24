@@ -1,5 +1,6 @@
 package br.com.casadocodigo.loja.models;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -43,6 +44,16 @@ public class Produto {
 	
 	@ElementCollection
 	private List<Preco> precos = new ArrayList<>();
+	
+	private String sumarioPath;
+
+	public String getSumarioPath() {
+		return sumarioPath;
+	}
+
+	public void setSumarioPath(String sumarioPath) {
+		this.sumarioPath = sumarioPath;
+	}
 
 	public List<Preco> getPrecos() {
 		return precos;
@@ -96,6 +107,10 @@ public class Produto {
 	public String toString() {
 		return "Produto [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", numeroPaginas="
 				+ numeroPaginas + "]";
+	}
+
+	public BigDecimal precoFor(TipoLivro tipoLivro) {
+		return precos.stream().filter(preco -> preco.getTipoLivro().equals(tipoLivro)).findFirst().get().getValor();
 	}
 
 }
