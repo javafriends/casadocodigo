@@ -12,7 +12,7 @@
 
 	<form:form action="${spring:mvcUrl('saveProduto').build()}"
 		method="post" commandName="produto" enctype="multipart/form-data">
-
+		
 		<div>
 			<label for="titulo">Titulo:</label>
 			<form:input path="titulo" id="titulo" />
