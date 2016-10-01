@@ -4,6 +4,8 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,7 +36,9 @@ public class ProdutosController {
 //	}
 	
 	@RequestMapping(method=RequestMethod.GET)
+	@Cacheable(value="listProdutos")
 	public ModelAndView list() {
+		System.out.println("Entrei no Controller para listar");
 		ModelAndView modelAndView = new ModelAndView("produtos/lista");
 		modelAndView.addObject("produtos", produtoDAO.list());
 		return modelAndView;
@@ -48,6 +52,7 @@ public class ProdutosController {
 	}
 	
 	@Transactional
+	@CacheEvict(value="listProdutos", allEntries=true)
 	@RequestMapping(method=RequestMethod.POST, name="saveProduto")
 	public ModelAndView save(@Valid Produto produto, BindingResult result, 
 			RedirectAttributes redirectAttributes, MultipartFile sumario) {

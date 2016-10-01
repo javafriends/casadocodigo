@@ -20,6 +20,7 @@ public class ProdutoDAO {
 	}
 
 	public List<Produto> list() {
+		System.out.println("Entrei no DAO para listar");
 		return manager.createQuery("select distinct(p) from Produto p join fetch p.precos", Produto.class).getResultList();
 	}
 
