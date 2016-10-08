@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import br.com.casadocodigo.loja.dao.UsuarioDAO;
 
@@ -25,7 +26,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.antMatchers(HttpMethod.POST,"/produtos").hasRole("ADMIN")
 		.antMatchers("/produtos/**").permitAll()
 		.anyRequest().authenticated()
-		.and().formLogin();
+		.and()
+		.formLogin().loginPage("/login")
+		.defaultSuccessUrl("/produtos")
+		.permitAll()
+		.and()
+		.logout()
+		.logoutRequestMatcher(new	AntPathRequestMatcher("/logout"))
+		.logoutSuccessUrl("/login")
+		.permitAll()
+		.and()
+		.exceptionHandling()
+		.accessDeniedPage("/WEB-INF/views/errors/403.jsp");
 	}
 	
 	@Override
