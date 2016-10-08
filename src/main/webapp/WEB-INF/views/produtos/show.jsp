@@ -2,25 +2,12 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib	tagdir="/WEB-INF/tags"	prefix="cdc"%>
 
-<!DOCTYPE html>
-<html class="no-js" lang="pt">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	
-	<title>${produto.titulo}</title>
-	
-	<link href="http://cdn.shopify.com/s/files/1/0155/7645/t/177/assets/style.css?10732338795638998506" rel="stylesheet" type="text/css"  media="all"  />
-  	<link href="http://cdn.shopify.com/s/files/1/0155/7645/t/177/assets/layout-colors.css?10732338795638998506" rel="stylesheet" type="text/css"  media="all"  />
-	<link href="http://cdn.shopify.com/s/files/1/0155/7645/t/177/assets/responsivo-style.css?10732338795638998506" rel="stylesheet" type="text/css"  media="all"  />
-	<link href="//cdn.shopify.com/s/files/1/0155/7645/t/177/assets/guia-do-programador-style.css?10732338795638998506" rel="stylesheet" type="text/css"  media="all"  />
-	<link href="//cdn.shopify.com/s/files/1/0155/7645/t/177/assets/products.css?10732338795638998506" rel="stylesheet" type="text/css"  media="all"  />
-</head>
+
 
 <c:url value="/shopping" var="shoppingCartUrl" />
-<body class="produto">
+<cdc:page	title="${produto.titulo}">
 	<header id="layout-header">
 		<div class="clearfix container">
 			<a href="/" id="logo"></a>
@@ -234,5 +221,4 @@
 			</div>
 		</div>
 	</footer>
-</body>
-</html>
+</cdc:page>
