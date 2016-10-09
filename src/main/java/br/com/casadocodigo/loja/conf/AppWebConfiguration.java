@@ -48,8 +48,8 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 		return resolver;
 	}
 
-	@Bean
-	public MessageSource messageSource() {
+	@Bean(name="messageSource")
+	public MessageSource errorMessage() {
 		ReloadableResourceBundleMessageSource bundle = new ReloadableResourceBundleMessageSource();
 		bundle.setBasename("/WEB-INF/resources/messages");
 		bundle.setDefaultEncoding("UTF-8");
